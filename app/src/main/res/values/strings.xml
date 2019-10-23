@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">HrApp</string>
+    <string name="copied">cpoied</string>
+    <string name="login">Login</string>
+
+    <string-array name="menu_titles">
+        <item>Contact Us</item>
+        <item>About</item>
+    </string-array>
+</resources>
