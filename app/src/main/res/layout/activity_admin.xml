@@ -6,11 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".LoginActivity"
-    android:background="@drawable/background"
-    >
+    tools:context=".AdminActivity">
+
     <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/login_drawer"
+        android:id="@+id/admin_drawer"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:fitsSystemWindows="false"
@@ -19,9 +18,8 @@
 
         >
 
-
         <include
-            layout="@layout/mylogin"
+            layout="@layout/my_admin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -38,14 +36,12 @@
             >
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_menu"
+                android:id="@+id/recycler_menu_admin"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 />
 
         </com.google.android.material.navigation.NavigationView>
-
     </androidx.drawerlayout.widget.DrawerLayout>
-
 
 </LinearLayout>
