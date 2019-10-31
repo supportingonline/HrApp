@@ -14,7 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".AdminActivity"></activity>
+        <activity android:name=".NotificationsActivity"></activity>
+        <activity android:name=".EmployeesActivity" />
+        <activity android:name=".UserActivity" />
+        <activity android:name=".AdminActivity" />
         <activity
             android:name=".LoginActivity"
             android:windowSoftInputMode="stateVisible|adjustResize" />

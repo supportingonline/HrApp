@@ -1,5 +1,6 @@
 package com.supportingonline.hrapp.Adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,29 +10,31 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.supportingonline.hrapp.Holder.MenuHolder;
 import com.supportingonline.hrapp.InterFaces.OnPress;
 import com.supportingonline.hrapp.Model.MenuModel;
 import com.supportingonline.hrapp.R;
+import com.supportingonline.hrapp.Views.MyViewHolder;
 
 import java.util.ArrayList;
 
-public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuHolder> {
+public class MenuAdapter extends RecyclerView.Adapter<MenuHolder> {
 
     private ArrayList<MenuModel> arrayList;
     private OnPress onPress;
+    private Context context;
 
-    public MenuAdapter(ArrayList<MenuModel> arrayList, OnPress onPress) {
+    public MenuAdapter(ArrayList<MenuModel> arrayList,Context context, OnPress onPress) {
         this.arrayList = arrayList;
+        this.context = context;
         this.onPress = onPress;
     }
 
     @NonNull
     @Override
     public MenuHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.recycler_menu,parent,false);
-        MenuHolder vh=new MenuHolder(view);
-        return vh;
+
+        return MyViewHolder.menuHolder(context,R.layout.recycler_menu,parent);
     }
 
     @Override
@@ -57,15 +60,5 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuHolder> {
         return arrayList.size();
     }
 
-    protected class MenuHolder extends RecyclerView.ViewHolder{
 
-       private TextView textView;
-       private ImageView imageView;
-
-        public MenuHolder(@NonNull View itemView) {
-            super(itemView);
-            textView=(TextView)itemView.findViewById(R.id.r_menu_title);
-            imageView=(ImageView)itemView.findViewById(R.id.r_menu_icon);
-        }
-    }
 }

@@ -96,7 +96,7 @@ public class LoginActivity extends AppCompatActivity {
             menuModels.add(model);
         }
 
-        menuAdapter=new MenuAdapter(menuModels, new OnPress() {
+        menuAdapter=new MenuAdapter(menuModels, this,new OnPress() {
             @Override
             public void onClick(View view, int position) {
 

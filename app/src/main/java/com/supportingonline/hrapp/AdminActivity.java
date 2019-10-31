@@ -7,18 +7,20 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.PopupMenu;
 
 import com.supportingonline.hrapp.Adapter.HeadCardAdapter;
 import com.supportingonline.hrapp.Adapter.MenuAdapter;
 import com.supportingonline.hrapp.Custom.MySizes;
 import com.supportingonline.hrapp.Custom.SpaceRecycler_H;
 import com.supportingonline.hrapp.Custom.SpaceRecycler_V;
-import com.supportingonline.hrapp.Dialogs.MyProgressDialog;
 import com.supportingonline.hrapp.InterFaces.OnPress;
 import com.supportingonline.hrapp.Model.HeadCardModel;
 import com.supportingonline.hrapp.Model.MenuModel;
@@ -30,7 +32,7 @@ public class AdminActivity extends AppCompatActivity {
     private DrawerLayout drawer;
 
     private Toolbar toolbar;
-    private ImageView menu_icon;
+    private ImageView menu_icon,noti_icon,more_icon;
 
     private RecyclerView recyclerView;
     private MenuAdapter menuAdapter;
@@ -49,6 +51,8 @@ public class AdminActivity extends AppCompatActivity {
         // init
         toolbar=(Toolbar)findViewById(R.id.admin_toolbar);
         menu_icon=(ImageView)toolbar.findViewById(R.id.tb_admin_image);
+        noti_icon=(ImageView)toolbar.findViewById(R.id.tb_admin_noti);
+        more_icon=(ImageView)toolbar.findViewById(R.id.tb_admin_more);
         recyclerView=(RecyclerView)findViewById(R.id.recycler_menu_admin);
         drawer=(DrawerLayout)findViewById(R.id.admin_drawer);
 
@@ -77,9 +81,31 @@ public class AdminActivity extends AppCompatActivity {
             @Override
             public void onClick(View view, int position) {
 
+                startActivity(new Intent(AdminActivity.this, EmployeesActivity.class));
             }
         });
         recyclerHeadCard.setAdapter(headCardAdapter);
+
+
+        // notification
+        noti_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AdminActivity.this,NotificationsActivity.class));
+            }
+        });
+
+
+        // more
+        more_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            popUp(v);
+            }
+        });
+
+
+
         // init head
         initHead();
 
@@ -109,7 +135,7 @@ public class AdminActivity extends AppCompatActivity {
             menuModels.add(model);
         }
 
-        menuAdapter=new MenuAdapter(menuModels, new OnPress() {
+        menuAdapter=new MenuAdapter(menuModels, this,new OnPress() {
             @Override
             public void onClick(View view, int position) {
 
@@ -125,5 +151,29 @@ public class AdminActivity extends AppCompatActivity {
         });
         recyclerView.setLayoutManager(new LinearLayoutManager(this,RecyclerView.VERTICAL,false));
         recyclerView.setAdapter(menuAdapter);
+    }
+
+
+
+    // actions
+
+    // pop up menu
+    private void popUp(View view){
+        PopupMenu popupMenu=new PopupMenu(AdminActivity.this,view);
+        popupMenu.getMenuInflater().inflate(R.menu.admin_menu,popupMenu.getMenu());
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                int id=item.getItemId();
+
+                switch (id){
+                    case R.id.m_a_myprofile:
+
+                        break;
+                }
+                return true;
+            }
+        });
+        popupMenu.show();
     }
 }

@@ -6,6 +6,10 @@
     <string name="please_wait">Please Wait</string>
     <string name="password">Password</string>
     <string name="email_address">Email address:</string>
+    <string name="employees">Employees</string>
+    <string name="back">Back</string>
+    <string name="notifications">Notifications</string>
+    <string name="my_profile">My Profile</string>
 
     <string-array name="menu_titles">
         <item>Contact Us</item>
