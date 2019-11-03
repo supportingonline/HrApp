@@ -7,16 +7,24 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.github.aakira.expandablelayout.ExpandableRelativeLayout;
 import com.supportingonline.hrapp.R;
 
 public class MenuHolder extends RecyclerView.ViewHolder{
 
     public TextView textView;
-    public ImageView imageView;
+    public ImageView icon,arrow;
+    public ExpandableRelativeLayout exp;
+    public RecyclerView recyclerView;
 
     public MenuHolder(@NonNull View itemView) {
         super(itemView);
         textView=(TextView)itemView.findViewById(R.id.r_menu_title);
-        imageView=(ImageView)itemView.findViewById(R.id.r_menu_icon);
+        icon=(ImageView)itemView.findViewById(R.id.r_menu_icon);
+        arrow=(ImageView)itemView.findViewById(R.id.r_menu_arrow);
+        exp=(ExpandableRelativeLayout)itemView.findViewById(R.id.r_menu_exp);
+        recyclerView=(RecyclerView)itemView.findViewById(R.id.recycler_insideMenu);
+
+        exp.collapse();
     }
 }

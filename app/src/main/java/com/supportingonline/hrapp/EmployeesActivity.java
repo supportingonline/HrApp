@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.PopupMenu;
 
 import com.supportingonline.hrapp.Adapter.UsersAdapter;
 import com.supportingonline.hrapp.Custom.MySizes;
@@ -37,6 +40,16 @@ public class EmployeesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view, int position) {
 
+                // click card
+                startActivity(new Intent(EmployeesActivity.this,UserActivity.class));
+            }
+        }, new OnPress() {
+            @Override
+            public void onClick(View view, int position) {
+                // click more
+                popUp(view);
+
+
             }
         });
 
@@ -52,5 +65,26 @@ public class EmployeesActivity extends AppCompatActivity {
             arrayList.add(model);
         }
         adapter.notifyDataSetChanged();
+    }
+
+    // actions
+
+    // pop up menu
+    private void popUp(View view){
+        PopupMenu popupMenu=new PopupMenu(EmployeesActivity.this,view);
+        popupMenu.getMenuInflater().inflate(R.menu.user_menu,popupMenu.getMenu());
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                int id=item.getItemId();
+
+                switch (id){
+
+
+                }
+                return true;
+            }
+        });
+        popupMenu.show();
     }
 }

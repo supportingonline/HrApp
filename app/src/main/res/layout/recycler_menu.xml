@@ -1,11 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layoutDirection="ltr"
     android:padding="@dimen/_10sdp"
+    android:background="@color/colorPrimary"
     >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layoutDirection="ltr"
+        android:layout_alignParentLeft="true"
+        >
+
+
 
     <ImageView
         android:id="@+id/r_menu_icon"
@@ -24,7 +41,35 @@
         android:layout_marginLeft="@dimen/_10sdp"
         android:textColor="@color/whit_h"
 
-
         />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/r_menu_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_arrow_right"
+        android:layout_alignParentRight="true"
+        android:tint="@android:color/white"
+        />
+
+    </RelativeLayout>
+
+
+
+    <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+        android:id="@+id/r_menu_exp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_insideMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+
+    </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
 </LinearLayout>

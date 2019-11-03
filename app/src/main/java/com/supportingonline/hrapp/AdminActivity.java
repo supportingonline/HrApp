@@ -132,6 +132,12 @@ public class AdminActivity extends AppCompatActivity {
             MenuModel model=new MenuModel();
             model.setTitle(menuTtiles[i]);
             model.setIcon(menuIcons[i]);
+            if (i==1){
+                ArrayList<MenuModel> m=new ArrayList<>();
+                MenuModel themodel=new MenuModel();
+                m.add(themodel);
+                model.setListInside(m);
+            }
             menuModels.add(model);
         }
 

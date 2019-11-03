@@ -1,15 +1,19 @@
 package com.supportingonline.hrapp.Adapter;
 
 import android.content.Context;
-import android.view.LayoutInflater;
+
 import android.view.View;
 import android.view.ViewGroup;
+
 import android.widget.ImageView;
-import android.widget.TextView;
+
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
+import com.github.aakira.expandablelayout.ExpandableLayoutListener;
 import com.supportingonline.hrapp.Holder.MenuHolder;
 import com.supportingonline.hrapp.InterFaces.OnPress;
 import com.supportingonline.hrapp.Model.MenuModel;
@@ -38,21 +42,100 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MenuHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final MenuHolder holder, final int position) {
+
+
+        // has child
+        boolean hasChild=false;
+        if (arrayList.get(position).getListInside().size()>0){
+            hasChild=true;
+        }
 
         // title
         holder.textView.setText(arrayList.get(position).getTitle());
 
+
+
         // icon
-        holder.imageView.setBackgroundResource(arrayList.get(position).getIcon());
+        holder.icon.setBackgroundResource(arrayList.get(position).getIcon());
+
+
+        // arrow
+        if (hasChild){
+            holder.arrow.setVisibility(View.VISIBLE);
+            InsideMenuAdapter adapter=new InsideMenuAdapter(arrayList.get(position).getListInside(), null,context);
+            holder.recyclerView.setLayoutManager(new LinearLayoutManager(context,RecyclerView.VERTICAL,false));
+            holder.recyclerView.setAdapter(adapter);
+        }else {
+            holder.arrow.setVisibility(View.INVISIBLE);
+        }
+
+
 
         // click
+
+        final boolean finalHasChild = hasChild;
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onPress.onClick(view,position);
+
+                if (finalHasChild){
+
+
+
+                  holder.exp.toggle();
+                  holder.exp.setListener(new ExpandableLayoutListener() {
+                      @Override
+                      public void onAnimationStart() {
+
+                          if (holder.exp.isExpanded()){
+                              holder.arrow.animate().rotation(0).start();
+                          }else {
+                              holder.arrow.animate().rotation(90).start();
+                          }
+                      }
+
+                      @Override
+                      public void onAnimationEnd() {
+
+                      }
+
+                      @Override
+                      public void onPreOpen() {
+
+                      }
+
+                      @Override
+                      public void onPreClose() {
+
+
+                      }
+
+                      @Override
+                      public void onOpened() {
+                          holder.arrow.animate().rotation(90).start();
+
+                      }
+
+                      @Override
+                      public void onClosed() {
+
+
+                      }
+                  });
+
+                }else {
+
+                    onPress.onClick(view,position);
+                }
+
             }
         });
+
+
+
+
+
     }
 
     @Override

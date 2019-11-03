@@ -20,11 +20,13 @@ public class UsersAdapter  extends RecyclerView.Adapter<UsersHolder>{
     private ArrayList<UsersModel> arrayList;
     private Context context;
     private OnPress onPress;
+    private OnPress onPressMore;
 
-    public UsersAdapter(ArrayList<UsersModel> arrayList, Context context,OnPress onPress) {
+    public UsersAdapter(ArrayList<UsersModel> arrayList, Context context,OnPress onPress,OnPress onPressMore) {
         this.arrayList = arrayList;
         this.context = context;
         this.onPress = onPress;
+        this.onPressMore = onPressMore;
     }
 
     @NonNull
@@ -39,8 +41,18 @@ public class UsersAdapter  extends RecyclerView.Adapter<UsersHolder>{
 
 
 
-        // click
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+
+        // click more
+
+        holder.more.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               onPressMore.onClick(v,position);
+            }
+        });
+
+        // click item
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onPress.onClick(v,position);

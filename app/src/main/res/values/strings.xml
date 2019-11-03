@@ -10,6 +10,9 @@
     <string name="back">Back</string>
     <string name="notifications">Notifications</string>
     <string name="my_profile">My Profile</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="profile">Profile</string>
 
     <string-array name="menu_titles">
         <item>Contact Us</item>
