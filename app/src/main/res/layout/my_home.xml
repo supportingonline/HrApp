@@ -24,6 +24,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layoutDirection="ltr"/>
+            
+            
+            <com.anychart.AnyChartView
+                android:id="@+id/home_pie_chart"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_200sdp"/>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".AdminActivity">
+    tools:context=".HomeActivity">
 
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/admin_drawer"
@@ -19,7 +19,7 @@
         >
 
         <include
-            layout="@layout/my_admin"
+            layout="@layout/my_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

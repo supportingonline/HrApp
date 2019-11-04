@@ -47,6 +47,9 @@ dependencies {
     // image cropper
     implementation 'com.theartofdev.edmodo:android-image-cropper:2.4.+'
 
+    // charts
+    implementation 'com.github.AnyChart:AnyChart-Android:1.1.2'
+
 
     // material for tab layout
     implementation 'com.google.android.material:material:1.0.0'

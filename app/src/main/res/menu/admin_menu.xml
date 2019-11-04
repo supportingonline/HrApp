@@ -4,4 +4,7 @@
     <item android:id="@+id/m_a_myprofile"
         android:title="@string/my_profile" />
 
+    <item android:id="@+id/m_a_setting"
+        android:title="@string/setting" />
+
 </menu>

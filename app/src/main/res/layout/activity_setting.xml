@@ -1,26 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/coordinatorLayout"
-    tools:context=".NotificationsActivity">
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-
+    tools:context=".SettingActivity">
 
     <include
-        android:id="@+id/notification_toolbar"
-        layout="@layout/toolbar_normal"
-        />
+        android:id="@+id/setting_toolbar"
+        layout="@layout/toolbar_normal"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -36,7 +26,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
 
-                android:id="@+id/recycler_notifications"
+                android:id="@+id/recycler_setting"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layoutDirection="ltr"
@@ -46,6 +36,4 @@
 
     </ScrollView>
 
-    </LinearLayout>
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>

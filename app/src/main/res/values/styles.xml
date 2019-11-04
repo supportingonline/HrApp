@@ -16,4 +16,10 @@
 
     </style>
 
+
+    <style name="CheckboxStyle" parent="AppTheme">
+        <item name="colorAccent">@color/whit_h</item>
+        <item name="android:textColorSecondary">@color/whit_h</item>
+    </style>
+
 </resources>

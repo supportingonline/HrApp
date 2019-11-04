@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">HrApp</string>
     <string name="copied">cpoied</string>
-    <string name="login">Login</string>
+    <string name="login">Sign In</string>
     <string name="loading">Loading</string>
     <string name="please_wait">Please Wait</string>
     <string name="password">Password</string>
-    <string name="email_address">Email address:</string>
+    <string name="email_address">Email</string>
     <string name="employees">Employees</string>
     <string name="back">Back</string>
     <string name="notifications">Notifications</string>
@@ -13,6 +13,12 @@
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
     <string name="profile">Profile</string>
+    <string name="forget_password">Forget Password ?</string>
+    <string name="remember_me">Remember me</string>
+    <string name="enter_your_email_to_reset_your_password">Enter your email to reset your password:</string>
+    <string name="request">Request</string>
+    <string name="cancel">Cancel</string>
+    <string name="setting">Setting</string>
 
     <string-array name="menu_titles">
         <item>Contact Us</item>

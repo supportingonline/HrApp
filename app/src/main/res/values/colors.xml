@@ -13,7 +13,8 @@
 
 
 
-    <color name="whit_h">#CCFFFFFF</color>
+    <color name="whit_h">#A6FFFFFF</color>
+    <color name="hollowcustom">#4D162574</color>
 
 
 </resources>

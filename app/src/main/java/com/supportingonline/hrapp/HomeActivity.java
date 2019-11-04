@@ -10,12 +10,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 
+import com.anychart.AnyChart;
+import com.anychart.AnyChartView;
+import com.anychart.chart.common.dataentry.DataEntry;
+import com.anychart.chart.common.dataentry.ValueDataEntry;
+import com.anychart.charts.Pie;
+import com.anychart.enums.Align;
+import com.anychart.enums.LegendLayout;
 import com.supportingonline.hrapp.Adapter.HeadCardAdapter;
 import com.supportingonline.hrapp.Adapter.MenuAdapter;
 import com.supportingonline.hrapp.Custom.MySizes;
@@ -26,8 +32,9 @@ import com.supportingonline.hrapp.Model.HeadCardModel;
 import com.supportingonline.hrapp.Model.MenuModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class AdminActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
 
     private DrawerLayout drawer;
 
@@ -43,10 +50,14 @@ public class AdminActivity extends AppCompatActivity {
     private RecyclerView recyclerHeadCard;
     private ArrayList<HeadCardModel> headCardList=new ArrayList<>();
 
+
+    private AnyChartView piechart;
+    private Pie pie ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin);
+        setContentView(R.layout.activity_home);
 
         // init
         toolbar=(Toolbar)findViewById(R.id.admin_toolbar);
@@ -55,7 +66,7 @@ public class AdminActivity extends AppCompatActivity {
         more_icon=(ImageView)toolbar.findViewById(R.id.tb_admin_more);
         recyclerView=(RecyclerView)findViewById(R.id.recycler_menu_admin);
         drawer=(DrawerLayout)findViewById(R.id.admin_drawer);
-
+        piechart=(AnyChartView) findViewById(R.id.home_pie_chart) ;
 
 
 
@@ -81,7 +92,7 @@ public class AdminActivity extends AppCompatActivity {
             @Override
             public void onClick(View view, int position) {
 
-                startActivity(new Intent(AdminActivity.this, EmployeesActivity.class));
+                startActivity(new Intent(HomeActivity.this, EmployeesActivity.class));
             }
         });
         recyclerHeadCard.setAdapter(headCardAdapter);
@@ -91,7 +102,7 @@ public class AdminActivity extends AppCompatActivity {
         noti_icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AdminActivity.this,NotificationsActivity.class));
+                startActivity(new Intent(HomeActivity.this,NotificationsActivity.class));
             }
         });
 
@@ -106,11 +117,44 @@ public class AdminActivity extends AppCompatActivity {
 
 
 
+        // pie chart
+        loadPieChart();
+
+
+
         // init head
         initHead();
 
 
 
+    }
+
+    private void loadPieChart() {
+        pie=AnyChart.pie();
+        List<DataEntry> data = new ArrayList<>();
+        data.add(new ValueDataEntry("Apples", 6371664));
+        data.add(new ValueDataEntry("Pears", 789622));
+        data.add(new ValueDataEntry("Bananas", 7216301));
+        data.add(new ValueDataEntry("Grapes", 1486621));
+        data.add(new ValueDataEntry("Oranges", 1200000));
+
+        pie.data(data);
+
+        pie.title("Fruits imported in 2015 (in kg)");
+
+        pie.labels().position("outside");
+
+        pie.legend().title().enabled(true);
+        pie.legend().title()
+                .text("Retail channels")
+                .padding(0d, 0d, 10d, 0d);
+
+        pie.legend()
+                .position("center-bottom")
+                .itemsLayout(LegendLayout.HORIZONTAL)
+                .align(Align.CENTER);
+
+        piechart.setChart(pie);
     }
 
     private void initHead() {
@@ -165,7 +209,7 @@ public class AdminActivity extends AppCompatActivity {
 
     // pop up menu
     private void popUp(View view){
-        PopupMenu popupMenu=new PopupMenu(AdminActivity.this,view);
+        PopupMenu popupMenu=new PopupMenu(HomeActivity.this,view);
         popupMenu.getMenuInflater().inflate(R.menu.admin_menu,popupMenu.getMenu());
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
@@ -175,6 +219,9 @@ public class AdminActivity extends AppCompatActivity {
                 switch (id){
                     case R.id.m_a_myprofile:
 
+                        break;
+                    case R.id.m_a_setting:
+                        startActivity(new Intent(HomeActivity.this,SettingActivity.class));
                         break;
                 }
                 return true;

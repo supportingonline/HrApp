@@ -1,32 +1,53 @@
 package com.supportingonline.hrapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.supportingonline.hrapp.Adapter.NotificationsAdapter;
 import com.supportingonline.hrapp.Custom.MySizes;
 import com.supportingonline.hrapp.Custom.SpaceRecycler_V;
 import com.supportingonline.hrapp.InterFaces.OnPress;
 import com.supportingonline.hrapp.Model.NotificationsModel;
+import com.supportingonline.hrapp.Views.SwipeToDeleteCallback;
 
 import java.util.ArrayList;
 
 public class NotificationsActivity extends AppCompatActivity {
 
+
+    private View viewBack;
+    private Toolbar toolbar;
+    private TextView title;
+
     private RecyclerView recyclerView;
     private ArrayList<NotificationsModel> arrayList=new ArrayList<>();
     private NotificationsAdapter adapter;
+
+    private CoordinatorLayout coordinatorLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notifications);
 
+        // init
+        toolbar=(Toolbar)findViewById(R.id.notification_toolbar);
+        title=(TextView)toolbar.findViewById(R.id.t_normal_title);
+        viewBack=(View)toolbar.findViewById(R.id.t_normal_back);
         recyclerView=(RecyclerView)findViewById(R.id.recycler_notifications);
+        coordinatorLayout = findViewById(R.id.coordinatorLayout);
 
 
         // recycler
@@ -41,6 +62,23 @@ public class NotificationsActivity extends AppCompatActivity {
         });
         recyclerView.setAdapter(adapter);
 
+        enableSwipeToDeleteAndUndo();
+
+
+
+
+
+
+        // back
+        viewBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+
+        // load
         loadNoti();
     }
 
@@ -50,5 +88,29 @@ public class NotificationsActivity extends AppCompatActivity {
             arrayList.add(model);
         }
         adapter.notifyDataSetChanged();
+    }
+
+    private void enableSwipeToDeleteAndUndo() {
+        SwipeToDeleteCallback swipeToDeleteCallback = new SwipeToDeleteCallback(this) {
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+
+
+                final int position = viewHolder.getAdapterPosition();
+                final NotificationsModel item = adapter.getData().get(position);
+
+                adapter.removeItem(position);
+
+
+                Snackbar snackbar = Snackbar
+                        .make(coordinatorLayout, "Notification was removed from the list.", Snackbar.LENGTH_LONG);
+
+                snackbar.show();
+
+            }
+        };
+
+        ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeToDeleteCallback);
+        itemTouchhelper.attachToRecyclerView(recyclerView);
     }
 }

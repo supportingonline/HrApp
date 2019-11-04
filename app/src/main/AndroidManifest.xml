@@ -14,10 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".NotificationsActivity"></activity>
+        <activity android:name=".SettingActivity"></activity>
+        <activity android:name=".Forgotten_Password_Activity" />
+        <activity android:name=".NotificationsActivity" />
         <activity android:name=".EmployeesActivity" />
         <activity android:name=".UserActivity" />
-        <activity android:name=".AdminActivity" />
+        <activity android:name=".HomeActivity" />
         <activity
             android:name=".LoginActivity"
             android:windowSoftInputMode="stateVisible|adjustResize" />

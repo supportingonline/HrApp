@@ -9,6 +9,7 @@ import com.supportingonline.hrapp.Adapter.UsersAdapter;
 import com.supportingonline.hrapp.Holder.HeadCardHolder;
 import com.supportingonline.hrapp.Holder.MenuHolder;
 import com.supportingonline.hrapp.Holder.NotificationsHolder;
+import com.supportingonline.hrapp.Holder.SettingHolder;
 import com.supportingonline.hrapp.Holder.UsersHolder;
 
 public class MyViewHolder {
@@ -31,5 +32,9 @@ public class MyViewHolder {
     public static NotificationsHolder notificationsHolder(Context context, int layout, ViewGroup viewGroup){
         View view= LayoutInflater.from(context).inflate(layout,viewGroup,false);
         return  new NotificationsHolder(view);
+    }
+    public static SettingHolder settingHolder(Context context, int layout, ViewGroup viewGroup){
+        View view= LayoutInflater.from(context).inflate(layout,viewGroup,false);
+        return  new SettingHolder(view);
     }
 }

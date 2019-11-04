@@ -42,4 +42,18 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsHold
     public int getItemCount() {
         return arrayList.size();
     }
+
+    public void removeItem(int position) {
+        arrayList.remove(position);
+        notifyItemRemoved(position);
+    }
+
+    public void restoreItem(NotificationsModel item, int position) {
+        arrayList.add(position, item);
+        notifyItemInserted(position);
+    }
+
+    public ArrayList<NotificationsModel> getData() {
+        return arrayList;
+    }
 }
