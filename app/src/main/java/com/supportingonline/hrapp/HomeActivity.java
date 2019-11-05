@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -15,13 +16,16 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 
-import com.anychart.AnyChart;
-import com.anychart.AnyChartView;
-import com.anychart.chart.common.dataentry.DataEntry;
-import com.anychart.chart.common.dataentry.ValueDataEntry;
-import com.anychart.charts.Pie;
-import com.anychart.enums.Align;
-import com.anychart.enums.LegendLayout;
+import com.github.mikephil.charting.animation.Easing;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.PercentFormatter;
+import com.github.mikephil.charting.utils.ColorTemplate;
+import com.github.mikephil.charting.utils.MPPointF;
 import com.supportingonline.hrapp.Adapter.HeadCardAdapter;
 import com.supportingonline.hrapp.Adapter.MenuAdapter;
 import com.supportingonline.hrapp.Custom.MySizes;
@@ -51,8 +55,8 @@ public class HomeActivity extends AppCompatActivity {
     private ArrayList<HeadCardModel> headCardList=new ArrayList<>();
 
 
-    private AnyChartView piechart;
-    private Pie pie ;
+    private PieChart piechart;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +70,7 @@ public class HomeActivity extends AppCompatActivity {
         more_icon=(ImageView)toolbar.findViewById(R.id.tb_admin_more);
         recyclerView=(RecyclerView)findViewById(R.id.recycler_menu_admin);
         drawer=(DrawerLayout)findViewById(R.id.admin_drawer);
-        piechart=(AnyChartView) findViewById(R.id.home_pie_chart) ;
+        piechart=(PieChart) findViewById(R.id.home_pie_chart) ;
 
 
 
@@ -130,32 +134,57 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void loadPieChart() {
-        pie=AnyChart.pie();
-        List<DataEntry> data = new ArrayList<>();
-        data.add(new ValueDataEntry("Apples", 6371664));
-        data.add(new ValueDataEntry("Pears", 789622));
-        data.add(new ValueDataEntry("Bananas", 7216301));
-        data.add(new ValueDataEntry("Grapes", 1486621));
-        data.add(new ValueDataEntry("Oranges", 1200000));
+        piechart.setUsePercentValues(true);
+        piechart.getDescription().setEnabled(false);
+        piechart.setDrawHoleEnabled(true);
+        piechart.setHoleColor(Color.WHITE);
 
-        pie.data(data);
+        piechart.setTransparentCircleColor(Color.WHITE);
+        piechart.setTransparentCircleAlpha(110);
 
-        pie.title("Fruits imported in 2015 (in kg)");
+        piechart.setHoleRadius(58f);
+        piechart.setTransparentCircleRadius(61f);
 
-        pie.labels().position("outside");
+        piechart.setDrawCenterText(true);
 
-        pie.legend().title().enabled(true);
-        pie.legend().title()
-                .text("Retail channels")
-                .padding(0d, 0d, 10d, 0d);
+        piechart.setRotationAngle(0);
+        // enable rotation of the chart by touch
+        piechart.setRotationEnabled(true);
+        piechart.setHighlightPerTapEnabled(true);
 
-        pie.legend()
-                .position("center-bottom")
-                .itemsLayout(LegendLayout.HORIZONTAL)
-                .align(Align.CENTER);
+        List<String> labes=new ArrayList<>() ;
+        labes.add("January");
+        labes.add("February");
+        labes.add("March");
+        labes.add("April");
+        labes.add("May");
+        labes.add("June");
 
-        piechart.setChart(pie);
+
+        List<PieEntry> entries=new ArrayList<>() ;
+        entries.add(new PieEntry(50, labes.get(0)));
+        entries.add(new PieEntry(10, labes.get(1)));
+        entries.add(new PieEntry(20, labes.get(2)));
+        entries.add(new PieEntry(20, labes.get(3)));
+
+
+
+
+        PieDataSet pieDataSet = new PieDataSet(entries, "");
+        pieDataSet.setColor(R.color.custom1);
+
+        PieData pieData = new PieData(pieDataSet);
+
+
+        pieDataSet.setColors(ColorTemplate.VORDIPLOM_COLORS);
+
+        piechart.setData(pieData);
+        piechart.setEntryLabelColor(R.color.custom1);
+
+        piechart.animateY(1400, Easing.EaseInOutQuad);
+
     }
+
 
     private void initHead() {
         String[] titles={"ahmed","nagy","mohamed"};
@@ -207,7 +236,7 @@ public class HomeActivity extends AppCompatActivity {
 
     // actions
 
-    // pop up menu
+    // pop up menu for admin
     private void popUp(View view){
         PopupMenu popupMenu=new PopupMenu(HomeActivity.this,view);
         popupMenu.getMenuInflater().inflate(R.menu.admin_menu,popupMenu.getMenu());
