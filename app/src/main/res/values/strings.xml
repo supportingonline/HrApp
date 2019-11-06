@@ -19,9 +19,15 @@
     <string name="request">Request</string>
     <string name="cancel">Cancel</string>
     <string name="setting">Setting</string>
+    <string name="search">Search</string>
+    <string name="add_user">Add User</string>
+    <string name="view_profile">View Profile</string>
 
     <string-array name="menu_titles">
         <item>Contact Us</item>
         <item>About</item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

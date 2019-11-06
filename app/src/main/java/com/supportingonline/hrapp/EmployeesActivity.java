@@ -2,6 +2,7 @@ package com.supportingonline.hrapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -34,7 +35,7 @@ public class EmployeesActivity extends AppCompatActivity {
 
         // recycler
         arrayList.clear();
-        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this,RecyclerView.VERTICAL,false));
         recyclerView.addItemDecoration(new SpaceRecycler_V(MySizes.gethight(this)/50));
         adapter=new UsersAdapter(arrayList, this, new OnPress() {
             @Override

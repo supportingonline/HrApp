@@ -9,11 +9,14 @@
     android:orientation="vertical"
     >
 
-    <include layout="@layout/toolbar_employees"/>
+    <include layout="@layout/toolbar_normal"/>
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        android:fillViewport="true"
+        android:fitsSystemWindows="true"
+        >
 
 
 
@@ -22,17 +25,84 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layoutDirection="ltr"
+            android:weightSum="7.5"
+            android:background="@drawable/rectangle1"
+            android:backgroundTint="@android:color/white"
+            android:padding="@dimen/_5sdp"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Users"
+                android:fontFamily="@font/pop_bold"
+                android:textAlignment="center"
+                />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="0.01"
+                android:background="@android:color/darker_gray"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:text="450 Total"
+                android:fontFamily="@font/pop_regular"
+                android:textAlignment="center"
+                />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="3.49"
+                android:layout_gravity="center"
+                android:background="@drawable/rectangle1"
+                android:hint="@string/search"
+                android:fontFamily="@font/pop_extra_light_italic"
+                android:backgroundTint="@color/hollowcustom3"
+                android:padding="@dimen/_2sdp"
+                android:textSize="@dimen/_10sdp"
+                android:drawableRight="@drawable/ic_search"
+                android:drawableTint="@color/custom1"
+                />
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.5"
+                android:background="@color/hollowcustom2"
+                >
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/add_user"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/_10sdp"
+                    android:textColor="@color/custom1"
+                    />
+            </RelativeLayout>
+
+        </LinearLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_marginVertical="@dimen/_3sdp"
         android:id="@+id/recycler_users"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layoutDirection="ltr"
+        android:nestedScrollingEnabled="false"
         />
 
     </LinearLayout>
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>

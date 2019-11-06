@@ -7,8 +7,10 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.supportingonline.hrapp.Custom.PupColor;
 import com.supportingonline.hrapp.Holder.UsersHolder;
 import com.supportingonline.hrapp.InterFaces.OnPress;
+import com.supportingonline.hrapp.Model.ColorPupModel;
 import com.supportingonline.hrapp.Model.UsersModel;
 import com.supportingonline.hrapp.R;
 import com.supportingonline.hrapp.Views.MyViewHolder;
@@ -51,13 +53,22 @@ public class UsersAdapter  extends RecyclerView.Adapter<UsersHolder>{
             }
         });
 
-        // click item
-        holder.imageView.setOnClickListener(new View.OnClickListener() {
+        // click view profile
+        holder.layoutContanier.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onPress.onClick(v,position);
             }
         });
+
+
+        // colors
+        ColorPupModel model= PupColor.PupColor();
+        holder.layoutContanier.setBackgroundTintList(context.getResources().getColorStateList(model.getSecondColor()));
+        holder.textClick.setTextColor(context.getResources().getColor(model.getHeadColor()));
+        holder.more.setImageTintList(context.getResources().getColorStateList(model.getHeadColor()));
+
+
 
     }
 
