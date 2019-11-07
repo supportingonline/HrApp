@@ -18,14 +18,10 @@ import android.widget.PopupMenu;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
-import com.github.mikephil.charting.utils.MPPointF;
 import com.supportingonline.hrapp.Adapter.HeadCardAdapter;
 import com.supportingonline.hrapp.Adapter.MenuAdapter;
 import com.supportingonline.hrapp.Custom.MySizes;
@@ -96,7 +92,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view, int position) {
 
-                startActivity(new Intent(HomeActivity.this, EmployeesActivity.class));
+                startActivity(new Intent(HomeActivity.this, UsersActivity.class));
             }
         });
         recyclerHeadCard.setAdapter(headCardAdapter);

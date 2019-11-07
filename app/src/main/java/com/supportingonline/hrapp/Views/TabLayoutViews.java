@@ -13,19 +13,17 @@ import com.supportingonline.hrapp.R;
 
 public class TabLayoutViews {
 
-    public static View getTabView(Context context ,int icon,int tabCountNotification){
-     View v = LayoutInflater.from(context).inflate(0, null);
+    public static View getTabView(Context context ,boolean isFinished){
+     View v = LayoutInflater.from(context).inflate(R.layout.tab_view, null);
        // TextView tv = (TextView) v.findViewById(0);
 
 
         RelativeLayout layout=(RelativeLayout)v.findViewById(0);
 
        // tv.setText(String.valueOf(tabCountNotification));
-        if (tabCountNotification==0){
-            layout.setVisibility(View.INVISIBLE);
-        }
-        ImageView img = (ImageView) v.findViewById(0);
-        img.setImageResource(icon);
+
+       // ImageView img = (ImageView) v.findViewById(0);
+       // img.setImageResource(icon);
        // img.setColorFilter(context.getResources().getColor(0, PorterDuff.Mode.SRC_IN);
 
 

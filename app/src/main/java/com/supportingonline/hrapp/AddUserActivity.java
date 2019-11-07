@@ -11,16 +11,17 @@ import com.supportingonline.hrapp.Adapter.ViewPagerAdapter;
 import com.supportingonline.hrapp.Fragment.FirstAddFragment;
 import com.supportingonline.hrapp.Fragment.SecondAddFragment;
 import com.supportingonline.hrapp.Fragment.SubmitAddFragment;
+import com.supportingonline.hrapp.Views.TabLayoutViews;
 
 import java.util.ArrayList;
 
 public class AddUserActivity extends AppCompatActivity {
 
 
-    private TabLayout tabLayout;
+    public static TabLayout tabLayout;
     private ViewPager viewPager;
 
-    private ArrayList<Fragment> fragments=new ArrayList<>();
+    public static ArrayList<Fragment> fragments=new ArrayList<>();
     private ViewPagerAdapter adapter;
 
     @Override
@@ -35,6 +36,7 @@ public class AddUserActivity extends AppCompatActivity {
         adapter=new ViewPagerAdapter(this,getSupportFragmentManager(),fragments);
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
+        initTab();
 
 
     }
@@ -45,6 +47,10 @@ public class AddUserActivity extends AppCompatActivity {
         fragments.add(new SecondAddFragment());
         fragments.add(new SubmitAddFragment());
         adapter.notifyDataSetChanged();
+
+        tabLayout.getTabAt(0).setCustomView(TabLayoutViews.getTabView(this,false));
+        tabLayout.getTabAt(1).setCustomView(TabLayoutViews.getTabView(this,false));
+        tabLayout.getTabAt(2).setCustomView(TabLayoutViews.getTabView(this,false));
 
 
     }

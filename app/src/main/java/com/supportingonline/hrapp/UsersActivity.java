@@ -1,7 +1,6 @@
 package com.supportingonline.hrapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,6 +9,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.PopupMenu;
+import android.widget.RelativeLayout;
 
 import com.supportingonline.hrapp.Adapter.UsersAdapter;
 import com.supportingonline.hrapp.Custom.MySizes;
@@ -19,8 +19,10 @@ import com.supportingonline.hrapp.Model.UsersModel;
 
 import java.util.ArrayList;
 
-public class EmployeesActivity extends AppCompatActivity {
+public class UsersActivity extends AppCompatActivity {
 
+
+    private RelativeLayout addLayout;
 
     private RecyclerView recyclerView;
     private ArrayList<UsersModel> arrayList=new ArrayList<>();
@@ -29,9 +31,19 @@ public class EmployeesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_employees);
+        setContentView(R.layout.users_employees);
 
         recyclerView=(RecyclerView)findViewById(R.id.recycler_users);
+        addLayout=(RelativeLayout)findViewById(R.id.users_add);
+
+
+        // add users
+        addLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(UsersActivity.this,AddUserActivity.class));
+            }
+        });
 
         // recycler
         arrayList.clear();
@@ -42,7 +54,7 @@ public class EmployeesActivity extends AppCompatActivity {
             public void onClick(View view, int position) {
 
                 // click card
-                startActivity(new Intent(EmployeesActivity.this,UserActivity.class));
+                startActivity(new Intent(UsersActivity.this,UserActivity.class));
             }
         }, new OnPress() {
             @Override
@@ -72,7 +84,7 @@ public class EmployeesActivity extends AppCompatActivity {
 
     // pop up menu
     private void popUp(View view){
-        PopupMenu popupMenu=new PopupMenu(EmployeesActivity.this,view);
+        PopupMenu popupMenu=new PopupMenu(UsersActivity.this,view);
         popupMenu.getMenuInflater().inflate(R.menu.user_menu,popupMenu.getMenu());
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
