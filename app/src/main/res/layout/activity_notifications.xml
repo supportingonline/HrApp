@@ -22,7 +22,7 @@
         layout="@layout/toolbar_normal"
         />
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="fill_parent">
 
@@ -40,11 +40,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layoutDirection="ltr"
+                android:nestedScrollingEnabled="false"
+                android:layout_marginHorizontal="@dimen/_5sdp"
                 />
 
         </LinearLayout>
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
     </LinearLayout>
 

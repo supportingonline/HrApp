@@ -9,7 +9,9 @@
     android:orientation="vertical"
     >
 
-    <include layout="@layout/toolbar_normal"/>
+    <include
+        android:id="@+id/users_toolbar"
+        layout="@layout/toolbar_normal"/>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"

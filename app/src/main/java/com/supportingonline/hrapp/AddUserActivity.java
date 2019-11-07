@@ -1,10 +1,13 @@
 package com.supportingonline.hrapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
 import com.supportingonline.hrapp.Adapter.ViewPagerAdapter;
@@ -17,6 +20,9 @@ import java.util.ArrayList;
 
 public class AddUserActivity extends AppCompatActivity {
 
+    private Toolbar toolbar;
+    private TextView title;
+    private View backView;
 
     public static TabLayout tabLayout;
     private ViewPager viewPager;
@@ -31,6 +37,21 @@ public class AddUserActivity extends AppCompatActivity {
 
         tabLayout=(TabLayout)findViewById(R.id.add_tabLayout);
         viewPager=(ViewPager)findViewById(R.id.add_viewpager);
+        toolbar=(Toolbar)findViewById(R.id.add_toolbar);
+        title=(TextView)toolbar.findViewById(R.id.t_normal_title);
+        backView=(View) toolbar.findViewById(R.id.t_normal_back);
+
+
+        //title
+        title.setText(getResources().getString(R.string.createnewuser));
+
+        // back
+        backView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         // pager
         adapter=new ViewPagerAdapter(this,getSupportFragmentManager(),fragments);

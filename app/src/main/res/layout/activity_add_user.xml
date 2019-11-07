@@ -8,7 +8,9 @@
     android:orientation="vertical"
     tools:context=".AddUserActivity">
 
-    <include layout="@layout/toolbar_normal"/>
+    <include
+        android:id="@+id/add_toolbar"
+        layout="@layout/toolbar_normal"/>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/add_tabLayout"

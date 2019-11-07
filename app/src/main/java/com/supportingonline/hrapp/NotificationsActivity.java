@@ -26,9 +26,9 @@ import java.util.ArrayList;
 public class NotificationsActivity extends AppCompatActivity {
 
 
-    private View viewBack;
     private Toolbar toolbar;
     private TextView title;
+    private View backView;
 
     private RecyclerView recyclerView;
     private ArrayList<NotificationsModel> arrayList=new ArrayList<>();
@@ -45,9 +45,20 @@ public class NotificationsActivity extends AppCompatActivity {
         // init
         toolbar=(Toolbar)findViewById(R.id.notification_toolbar);
         title=(TextView)toolbar.findViewById(R.id.t_normal_title);
-        viewBack=(View)toolbar.findViewById(R.id.t_normal_back);
+        backView=(View) toolbar.findViewById(R.id.t_normal_back);
         recyclerView=(RecyclerView)findViewById(R.id.recycler_notifications);
         coordinatorLayout = findViewById(R.id.coordinatorLayout);
+
+        //title
+        title.setText(getResources().getString(R.string.notifications));
+
+        // back
+        backView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
 
         // recycler
@@ -69,13 +80,7 @@ public class NotificationsActivity extends AppCompatActivity {
 
 
 
-        // back
-        viewBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+
 
 
         // load

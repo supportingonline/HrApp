@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
 
 
+
     >
 
     <ImageView
@@ -24,8 +25,8 @@
         android:text="@string/back"
         android:textColor="@color/whit_h"
         android:layout_gravity="center"
-        android:fontFamily="@font/pop_regular"
-        android:textSize="@dimen/_13sdp"
+        android:fontFamily="@font/pop_bold"
+        android:textSize="@dimen/_10sdp"
         />
 
 </LinearLayout>

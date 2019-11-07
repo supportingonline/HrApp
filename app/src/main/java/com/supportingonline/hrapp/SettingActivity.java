@@ -22,7 +22,7 @@ public class SettingActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private TextView title;
-    private View viewBack;
+    private View backView;
 
     private RecyclerView recyclerView;
     private ArrayList<String> arrayList=new ArrayList<>();
@@ -37,8 +37,19 @@ public class SettingActivity extends AppCompatActivity {
         // init
         toolbar=(Toolbar)findViewById(R.id.setting_toolbar);
         title=(TextView)toolbar.findViewById(R.id.t_normal_title);
-        viewBack=(View)toolbar.findViewById(R.id.t_normal_back);
+        backView=(View) toolbar.findViewById(R.id.t_normal_back);
         recyclerView=(RecyclerView)findViewById(R.id.recycler_setting);
+
+        //title
+        title.setText(getResources().getString(R.string.setting));
+
+        // back
+        backView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
 
         // recycler
@@ -56,12 +67,6 @@ public class SettingActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
 
-        // back
-        viewBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+
     }
 }

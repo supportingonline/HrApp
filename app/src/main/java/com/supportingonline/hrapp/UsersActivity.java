@@ -1,6 +1,7 @@
 package com.supportingonline.hrapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.supportingonline.hrapp.Adapter.UsersAdapter;
 import com.supportingonline.hrapp.Custom.MySizes;
@@ -22,11 +24,16 @@ import java.util.ArrayList;
 public class UsersActivity extends AppCompatActivity {
 
 
+    private Toolbar toolbar;
+    private TextView title;
+    private View backView;
+
     private RelativeLayout addLayout;
 
     private RecyclerView recyclerView;
     private ArrayList<UsersModel> arrayList=new ArrayList<>();
     private UsersAdapter adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +42,21 @@ public class UsersActivity extends AppCompatActivity {
 
         recyclerView=(RecyclerView)findViewById(R.id.recycler_users);
         addLayout=(RelativeLayout)findViewById(R.id.users_add);
+        toolbar=(Toolbar)findViewById(R.id.users_toolbar);
+        title=(TextView)toolbar.findViewById(R.id.t_normal_title);
+        backView=(View) toolbar.findViewById(R.id.t_normal_back);
+
+
+        //title
+        title.setText(getResources().getString(R.string.users));
+
+        // back
+        backView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
 
         // add users
