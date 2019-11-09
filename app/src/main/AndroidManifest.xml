@@ -14,9 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".AddUserActivity"></activity>
+        <activity android:name=".AddUserActivity"/>
         <activity android:name=".SettingActivity" />
-        <activity android:name=".Forgotten_Password_Activity" />
         <activity android:name=".NotificationsActivity" />
         <activity android:name=".UsersActivity" />
         <activity android:name=".UserActivity" />

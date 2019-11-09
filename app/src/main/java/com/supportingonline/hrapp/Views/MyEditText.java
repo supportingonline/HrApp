@@ -11,4 +11,15 @@ public class MyEditText {
         editText.setLongClickable(isEnabled);
         editText.setCursorVisible(isEnabled) ;
     }
+
+    public static boolean isEmail(String data){
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+        boolean isemail=false;
+
+        if (data.matches(emailPattern)){
+            isemail = true;
+        }
+
+        return  isemail;
+    }
 }

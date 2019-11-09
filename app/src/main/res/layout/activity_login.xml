@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -11,121 +11,22 @@
     >
 
 
-    <androidx.core.widget.NestedScrollView
+
+    <ImageView
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_gravity="center"
+        android:src="@drawable/logo"
+        android:layout_marginTop="@dimen/_50sdp"
+        />
+
+    <FrameLayout
+        android:layout_marginTop="@dimen/_20sdp"
+        android:id="@+id/login_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        >
+        android:layout_height="fill_parent"
+        />
 
 
 
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingHorizontal="@dimen/_20sdp"
-            >
-
-            <ImageView
-                android:layout_width="@dimen/_50sdp"
-                android:layout_height="@dimen/_50sdp"
-                android:layout_gravity="center"
-                android:src="@drawable/logo"/>
-
-            <TextView
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="@string/login"
-                android:textColor="@android:color/white"
-                android:fontFamily="@font/pop_regular"/>
-
-            <EditText
-                android:id="@+id/login_email"
-                android:layout_marginTop="@dimen/_30sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/email_address"
-                android:textColorHint="@color/whit_h"
-                android:paddingHorizontal="@dimen/_15sdp"
-                android:paddingVertical="@dimen/_10sdp"
-                android:background="@drawable/rectangle2"
-                android:backgroundTint="@color/hollowcustom"
-                android:drawablePadding="@dimen/_10sdp"
-                android:textColor="@color/whit_h"
-                android:inputType="textEmailAddress"
-               android:textSize="@dimen/_9sdp"
-                />
-
-            <EditText
-                android:id="@+id/login_password"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/password"
-                android:textColorHint="@color/whit_h"
-                android:paddingHorizontal="@dimen/_15sdp"
-                android:paddingVertical="@dimen/_10sdp"
-                android:background="@drawable/rectangle2"
-                android:backgroundTint="@color/hollowcustom"
-                android:drawablePadding="@dimen/_10sdp"
-                android:textColor="@color/whit_h"
-                android:inputType="textPassword"
-                android:textSize="@dimen/_9sdp"
-                />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="2"
-                android:layoutDirection="ltr"
-                android:padding="@dimen/_5sdp"
-                >
-
-                <CheckBox
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/remember_me"
-                    android:fontFamily="@font/pop_extra_light_italic"
-                    android:textColor="@android:color/white"
-                    app:theme="@style/CheckboxStyle"
-
-                    />
-                <TextView
-                    android:id="@+id/login_forget"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/forget_password"
-                    android:textColor="@android:color/white"
-                    android:fontFamily="@font/pop_extra_light_italic"
-                    android:textAlignment="viewEnd"
-
-                    />
-            </LinearLayout>
-
-
-            <Button
-                android:id="@+id/login_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@drawable/rectangle_stroke_transparent"
-                android:backgroundTint="@color/whit_h"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:text="@string/login"
-                android:textColor="@android:color/white"
-                android:textAllCaps="false"
-                android:paddingHorizontal="@dimen/_30sdp"
-                android:fontFamily="@font/pop_regular"
-
-                />
-
-
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
-
-
-</RelativeLayout>
+</LinearLayout>
