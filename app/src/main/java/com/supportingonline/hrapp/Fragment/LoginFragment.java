@@ -15,13 +15,23 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.android.volley.toolbox.StringRequest;
+import com.supportingonline.hrapp.Api.MyRequest;
+import com.supportingonline.hrapp.Api.OnErrorRequest;
+import com.supportingonline.hrapp.Api.OnSuccessRequest;
 import com.supportingonline.hrapp.Custom.KeyBoardHiding;
 import com.supportingonline.hrapp.Custom.MyFragment;
 import com.supportingonline.hrapp.Dialogs.MyProgressDialog;
 import com.supportingonline.hrapp.HomeActivity;
+import com.supportingonline.hrapp.InterFaces.ErrorCall;
+import com.supportingonline.hrapp.InterFaces.SuccessCall;
 import com.supportingonline.hrapp.LoginActivity;
 import com.supportingonline.hrapp.R;
 import com.supportingonline.hrapp.Views.MyEditText;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 /**
@@ -144,6 +154,24 @@ public class LoginFragment extends Fragment {
     private void login(String email, String password) {
          startActivity(new Intent(view.getContext(), HomeActivity.class));
          getActivity().overridePendingTransition(R.anim.slide_from_righ,R.anim.slide_to_left);
+
+        StringRequest request=new MyRequest("",1,"url",new OnSuccessRequest(new SuccessCall() {
+            @Override
+            public void OnBack(JSONObject object) {
+
+                // success
+
+
+
+            }
+        }),new OnErrorRequest(view.getContext(), new ErrorCall() {
+            @Override
+            public void OnBack() {
+
+                // error
+
+            }
+        }));
     }
 
 }
