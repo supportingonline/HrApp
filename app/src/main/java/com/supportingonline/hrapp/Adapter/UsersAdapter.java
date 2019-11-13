@@ -1,8 +1,12 @@
 package com.supportingonline.hrapp.Adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,19 +20,24 @@ import com.supportingonline.hrapp.R;
 import com.supportingonline.hrapp.Views.MyViewHolder;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class UsersAdapter  extends RecyclerView.Adapter<UsersHolder>{
+public class UsersAdapter  extends RecyclerView.Adapter<UsersHolder> implements Filterable {
 
     private ArrayList<UsersModel> arrayList;
+    private ArrayList<UsersModel> arrayListFiltered;
     private Context context;
     private OnPress onPress;
     private OnPress onPressMore;
 
+
     public UsersAdapter(ArrayList<UsersModel> arrayList, Context context,OnPress onPress,OnPress onPressMore) {
         this.arrayList = arrayList;
+        this.arrayListFiltered = arrayList;
         this.context = context;
         this.onPress = onPress;
         this.onPressMore = onPressMore;
+
     }
 
     @NonNull
@@ -42,6 +51,12 @@ public class UsersAdapter  extends RecyclerView.Adapter<UsersHolder>{
     public void onBindViewHolder(@NonNull UsersHolder holder, final int position) {
 
 
+        // get model
+        UsersModel user=arrayListFiltered.get(position);
+
+
+        // name
+        holder.name.setText(user.getName());
 
 
         // click more
@@ -72,9 +87,52 @@ public class UsersAdapter  extends RecyclerView.Adapter<UsersHolder>{
 
     }
 
+
+
     @Override
     public int getItemCount() {
-        return arrayList.size();
+        return arrayListFiltered.size();
+    }
+
+
+    @Override
+    public Filter getFilter() {
+
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String charString = charSequence.toString();
+                arrayListFiltered = new ArrayList<>();
+                if (charString.isEmpty()) {
+                    arrayListFiltered = arrayList;
+                } else {
+                    ArrayList<UsersModel> filteredList = new ArrayList<>();
+                    for (UsersModel row : arrayList) {
+
+                        // name match condition. this might differ depending on your requirement
+                        // here we are looking for name or phone number match
+
+                        if (row.getName().toLowerCase().contains(charString.toLowerCase()) || row.getName().contains(charSequence)) {
+                            Log.d("name",row.getName());
+                            filteredList.add(row);
+                        }
+                    }
+
+                    arrayListFiltered = filteredList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = arrayListFiltered;
+                Log.d("count", String.valueOf(arrayListFiltered.size()));
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                arrayListFiltered = (ArrayList<UsersModel>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 
 

@@ -77,7 +77,7 @@ public class LoginFragment extends Fragment {
                 String email=eemail.getText().toString().trim();
                 String password=epassword.getText().toString().trim();
 
-                if (email.length()==0){
+              /*  if (email.length()==0){
                     alarmEmail.setVisibility(View.VISIBLE);
                     alarmEmail.setText(view.getContext().getResources().getString(R.string.this_field_is_required));
                 }else if (!MyEditText.isEmail(email)){
@@ -99,7 +99,9 @@ public class LoginFragment extends Fragment {
                         // login
                         login(email,password);
                     }
-                }
+                }*/
+
+                login(email,password);
 
 
 

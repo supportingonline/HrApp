@@ -34,13 +34,19 @@
                 android:textColor="@android:color/white"
                 android:fontFamily="@font/pop_regular"/>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/email_address"
+                android:textColorHint="@color/whit_h"
+                app:boxBackgroundColor="@android:color/white"
+                android:theme="@style/TextLabel"
+                >
             <EditText
                 android:id="@+id/login_email"
                 android:layout_marginTop="@dimen/_30sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/email_address"
-                android:textColorHint="@color/whit_h"
                 android:paddingHorizontal="@dimen/_15sdp"
                 android:paddingVertical="@dimen/_10sdp"
                 android:background="@drawable/rectangle2"
@@ -51,6 +57,8 @@
                 android:textSize="@dimen/_9sdp"
                 android:imeOptions="flagNoExtractUi"
                 />
+            </com.google.android.material.textfield.TextInputLayout>
+
             <TextView
                 android:id="@+id/login_alarm_email"
                 android:layout_marginTop="@dimen/_2sdp"
@@ -62,13 +70,21 @@
                 android:textStyle="italic"
                 android:textSize="@dimen/_8sdp"/>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/password"
+                android:textColorHint="@color/whit_h"
+                app:boxBackgroundColor="@android:color/white"
+                android:theme="@style/TextLabel"
+                >
+
+
             <EditText
                 android:id="@+id/login_password"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/password"
-                android:textColorHint="@color/whit_h"
                 android:paddingHorizontal="@dimen/_15sdp"
                 android:paddingVertical="@dimen/_10sdp"
                 android:background="@drawable/rectangle2"
@@ -78,8 +94,8 @@
                 android:inputType="textPassword"
                 android:textSize="@dimen/_9sdp"
                 android:imeOptions="flagNoExtractUi"
-
                 />
+            </com.google.android.material.textfield.TextInputLayout>
             <TextView
                 android:id="@+id/login_alarm_password"
                 android:layout_marginTop="@dimen/_2sdp"

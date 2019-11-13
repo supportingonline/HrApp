@@ -22,4 +22,12 @@
         <item name="android:textColorSecondary">@color/whit_h</item>
     </style>
 
+    <style name="TextLabel" parent="TextAppearance.AppCompat">
+
+        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+        <item name="colorAccent">@android:color/white</item>
+        <item name="colorControlNormal">@android:color/white</item>
+        <item name="colorControlActivated">@android:color/white</item>
+    </style>
+
 </resources>

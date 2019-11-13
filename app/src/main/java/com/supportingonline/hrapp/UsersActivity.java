@@ -1,14 +1,18 @@
 package com.supportingonline.hrapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -29,7 +33,7 @@ public class UsersActivity extends AppCompatActivity {
     private View backView;
 
     private RelativeLayout addLayout;
-
+    private EditText search;
     private RecyclerView recyclerView;
     private ArrayList<UsersModel> arrayList=new ArrayList<>();
     private UsersAdapter adapter;
@@ -45,6 +49,7 @@ public class UsersActivity extends AppCompatActivity {
         toolbar=(Toolbar)findViewById(R.id.users_toolbar);
         title=(TextView)toolbar.findViewById(R.id.t_normal_title);
         backView=(View) toolbar.findViewById(R.id.t_normal_back);
+        search= (EditText) findViewById(R.id.users_search);
 
 
         //title
@@ -90,13 +95,38 @@ public class UsersActivity extends AppCompatActivity {
 
         recyclerView.setAdapter(adapter);
 
+
+
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                adapter.getFilter().filter(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
         loadUsers();
+
+
+
 
     }
 
     private void loadUsers() {
+        String[] names={"ahmed","nagy","mohamed","karim","mahmoud","hossam","abd elghany","refaat","makrmalla","yosuef"};
         for (int i= 0;i<10;i++){
             UsersModel model=new UsersModel();
+            model.setName(names[i]);
             arrayList.add(model);
         }
         adapter.notifyDataSetChanged();

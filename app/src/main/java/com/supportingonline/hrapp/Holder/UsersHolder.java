@@ -13,8 +13,9 @@ import com.supportingonline.hrapp.R;
 public class UsersHolder  extends RecyclerView.ViewHolder {
 
     public ImageView more,imageView;
-    public TextView textClick;
+    public TextView textClick,name;
     public RelativeLayout layoutContanier;
+
 
     public UsersHolder(@NonNull View itemView) {
         super(itemView);
@@ -22,6 +23,7 @@ public class UsersHolder  extends RecyclerView.ViewHolder {
         more=(ImageView)itemView.findViewById(R.id.r_users_more);
         imageView=(ImageView)itemView.findViewById(R.id.r_users_image);
         textClick=(TextView)itemView.findViewById(R.id.r_users_clicktext);
+        name=(TextView)itemView.findViewById(R.id.r_users_name);
         layoutContanier=(RelativeLayout) itemView.findViewById(R.id.r_users_clickcontainer);
     }
 

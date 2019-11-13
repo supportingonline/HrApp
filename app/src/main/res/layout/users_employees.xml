@@ -62,18 +62,17 @@
                 />
 
             <EditText
+                android:id="@+id/users_search"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="3.49"
                 android:layout_gravity="center"
-                android:background="@drawable/rectangle1"
-                android:hint="@string/search"
                 android:fontFamily="@font/pop_extra_light_italic"
-                android:backgroundTint="@color/hollowcustom3"
                 android:padding="@dimen/_2sdp"
                 android:textSize="@dimen/_10sdp"
-                android:drawableRight="@drawable/ic_search"
-                android:drawableTint="@color/custom1"
+                android:background="@drawable/rectangle1"
+                android:backgroundTint="@color/hollowcustom3"
+                android:hint="@string/search"
                 />
             <RelativeLayout
                 android:id="@+id/users_add"
