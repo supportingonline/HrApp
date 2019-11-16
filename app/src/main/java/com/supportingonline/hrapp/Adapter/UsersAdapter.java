@@ -20,7 +20,7 @@ import com.supportingonline.hrapp.R;
 import com.supportingonline.hrapp.Views.MyViewHolder;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class UsersAdapter  extends RecyclerView.Adapter<UsersHolder> implements Filterable {
 

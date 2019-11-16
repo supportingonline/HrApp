@@ -12,6 +12,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.nio.charset.StandardCharsets;
+import java.util.Objects;
 
 public class OnErrorRequest implements Response.ErrorListener {
 
@@ -25,7 +26,8 @@ public class OnErrorRequest implements Response.ErrorListener {
 
     @Override
     public void onErrorResponse(VolleyError error) {
-      //  Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
+     Toast.makeText(context, error.getMessage(), Toast.LENGTH_SHORT).show();
+        Log.i("main_error", Objects.requireNonNull(error.getMessage()));
         errorCall.OnBack();
 
         if (error.networkResponse!=null) {

@@ -1,4 +1,4 @@
-package com.supportingonline.hrapp;
+package com.supportingonline.hrapp.Activites.Login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import com.supportingonline.hrapp.Custom.MyFragment;
 import com.supportingonline.hrapp.Fragment.LoginFragment;
+import com.supportingonline.hrapp.R;
 
 import net.skoumal.fragmentback.BackFragmentHelper;
 
@@ -21,8 +22,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-
 
 
 

@@ -16,6 +16,7 @@ public class MyViewHolder {
 
     public static UsersHolder myuserholder(Context context, int layout, ViewGroup viewGroup){
         View view= LayoutInflater.from(context).inflate(layout,viewGroup,false);
+
        return  new UsersHolder(view);
     }
 

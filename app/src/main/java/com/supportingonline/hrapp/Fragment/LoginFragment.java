@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,29 +16,33 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.toolbox.StringRequest;
 import com.supportingonline.hrapp.Api.MyRequest;
 import com.supportingonline.hrapp.Api.OnErrorRequest;
 import com.supportingonline.hrapp.Api.OnSuccessRequest;
 import com.supportingonline.hrapp.Custom.KeyBoardHiding;
+import com.supportingonline.hrapp.Custom.MyFragmentCustom;
 import com.supportingonline.hrapp.Custom.MyFragment;
+
+import com.supportingonline.hrapp.Custom.Myvollysinglton;
 import com.supportingonline.hrapp.Dialogs.MyProgressDialog;
 import com.supportingonline.hrapp.HomeActivity;
 import com.supportingonline.hrapp.InterFaces.ErrorCall;
 import com.supportingonline.hrapp.InterFaces.SuccessCall;
-import com.supportingonline.hrapp.LoginActivity;
 import com.supportingonline.hrapp.R;
 import com.supportingonline.hrapp.Views.MyEditText;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class LoginFragment extends Fragment {
+public class LoginFragment extends MyFragmentCustom {
 
 
     private TextView forgetenPassword,alarmEmail,alarmPassword;
@@ -77,13 +82,14 @@ public class LoginFragment extends Fragment {
                 String email=eemail.getText().toString().trim();
                 String password=epassword.getText().toString().trim();
 
-              /*  if (email.length()==0){
+                if (email.length()==0){
                     alarmEmail.setVisibility(View.VISIBLE);
                     alarmEmail.setText(view.getContext().getResources().getString(R.string.this_field_is_required));
                 }else if (!MyEditText.isEmail(email)){
                     alarmEmail.setVisibility(View.VISIBLE);
                     alarmEmail.setText(view.getContext().getResources().getString(R.string.valiedemail));
                 }
+
                 else {
                     alarmEmail.setVisibility(View.INVISIBLE);
                     if (password.length()==0){
@@ -99,9 +105,7 @@ public class LoginFragment extends Fragment {
                         // login
                         login(email,password);
                     }
-                }*/
-
-                login(email,password);
+                }
 
 
 
@@ -153,15 +157,16 @@ public class LoginFragment extends Fragment {
         return view;
     }
 
-    private void login(String email, String password) {
-         startActivity(new Intent(view.getContext(), HomeActivity.class));
-         getActivity().overridePendingTransition(R.anim.slide_from_righ,R.anim.slide_to_left);
+    private void login(final String email, final String password) {
 
-        StringRequest request=new MyRequest("",1,"url",new OnSuccessRequest(new SuccessCall() {
+        String url=domain()+"api/login";
+        showDialog();
+        StringRequest request=new MyRequest("",1,url,new OnSuccessRequest(new SuccessCall() {
             @Override
             public void OnBack(JSONObject object) {
 
                 // success
+                Log.i("responze",object.toString());
 
 
 
@@ -171,9 +176,25 @@ public class LoginFragment extends Fragment {
             public void OnBack() {
 
                 // error
+              cancelDialog();
+
 
             }
-        }));
+        })){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> map= new HashMap<>();
+                map.put("email",email);
+                map.put("password",password);
+                return map;
+            }
+        };
+
+        Myvollysinglton.getInstance(view.getContext()).addtorequst(request);
     }
 
+    private void goToHomeActivity(){
+        startActivity(new Intent(view.getContext(), HomeActivity.class));
+        getActivity().overridePendingTransition(R.anim.slide_from_righ,R.anim.slide_to_left);
+    }
 }

@@ -1,4 +1,4 @@
-package com.supportingonline.hrapp;
+package com.supportingonline.hrapp.Activites.Users;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,10 +18,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.supportingonline.hrapp.Adapter.UsersAdapter;
+import com.supportingonline.hrapp.AddUserActivity;
 import com.supportingonline.hrapp.Custom.MySizes;
 import com.supportingonline.hrapp.Custom.SpaceRecycler_V;
 import com.supportingonline.hrapp.InterFaces.OnPress;
 import com.supportingonline.hrapp.Model.UsersModel;
+import com.supportingonline.hrapp.R;
+import com.supportingonline.hrapp.UserActivity;
 
 import java.util.ArrayList;
 
@@ -68,7 +71,7 @@ public class UsersActivity extends AppCompatActivity {
         addLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(UsersActivity.this,AddUserActivity.class));
+                startActivity(new Intent(UsersActivity.this, AddUserActivity.class));
             }
         });
 
@@ -81,7 +84,7 @@ public class UsersActivity extends AppCompatActivity {
             public void onClick(View view, int position) {
 
                 // click card
-                startActivity(new Intent(UsersActivity.this,UserActivity.class));
+                startActivity(new Intent(UsersActivity.this, UserActivity.class));
             }
         }, new OnPress() {
             @Override

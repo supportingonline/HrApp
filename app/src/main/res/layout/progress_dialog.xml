@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="@dimen/_10sdp"
+    android:background="@color/hollowcustom2"
     >
 
 
@@ -14,7 +15,8 @@
         android:textAlignment="center"
         android:text="@string/loading"
         android:textStyle="bold"
-        android:textSize="@dimen/_12sdp"
+        android:textSize="@dimen/_13sdp"
+        android:textColor="@color/colorAccent"
         />
     <TextView
         android:layout_marginTop="@dimen/_5sdp"
@@ -24,11 +26,14 @@
         android:text="@string/please_wait"
         android:textStyle="italic"
         android:textSize="@dimen/_9sdp"
+        android:textColor="@color/colorAccent"
         />
 
     <ProgressBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/_10sdp"/>
+        android:layout_marginTop="@dimen/_10sdp"
+        android:indeterminateTint="@color/colorAccent"
+        />
 </LinearLayout>

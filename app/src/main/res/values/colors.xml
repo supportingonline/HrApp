@@ -14,6 +14,7 @@
 
 
     <color name="whit_h">#A6FFFFFF</color>
+    <color name="hollow">#3BFFFFFF</color>
     <color name="hollowcustom">#4D162574</color>
     <color name="hollowcustom2">#eef1ff</color>
     <color name="hollowcustom3">#6AEEF1FF</color>

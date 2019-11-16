@@ -3,8 +3,8 @@ package com.supportingonline.hrapp.Model;
 public class UsersModel {
 
     private String id;
-    private String name;
-    private String jobTitle;
+    private String name="name";
+    private String jobTitle="jobTitle";
 
     public String getId() {
         return id;
